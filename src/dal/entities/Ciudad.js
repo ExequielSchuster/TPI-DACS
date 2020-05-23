@@ -4,20 +4,20 @@ module.exports = (sequelize, DataType) => {
       id: {
         type: DataType.INTEGER,
         primaryKey:true,
+        autoIncrement: true
       },
-      
       nombre: {
         type: DataType.STRING,
-            allowNull: false,
-            validate: {
-                notEmpty: true
-            }
+        allowNull: false,
+        validate: {
+          notEmpty: true
+        }
       },
     });
 
     //RELACION
     Ciudad.associate = (models) => {
-      Ciudad.hasMany(models.Calles,{as:'CiudadId'});
+      Ciudad.hasMany(models.Calles);
     };
  
     return Ciudad;

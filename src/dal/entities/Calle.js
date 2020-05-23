@@ -6,10 +6,9 @@ module.exports = (sequelize, DataType) => {
         primaryKey:true,
         autoIncrement: true
       },
-      
       nombre: {
         type: DataType.STRING,
-        defaultValue: false,
+        allowNull: false,
         validate: {
           notEmpty: true
         }
@@ -20,6 +19,7 @@ module.exports = (sequelize, DataType) => {
     
     Calle.associate = (models) => {
         Calle.belongsTo(models.Ciudades);
+        Calle.hasMany(models.Direcciones);
     };
 
     return Calle;
