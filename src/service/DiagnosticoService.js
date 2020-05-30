@@ -1,4 +1,5 @@
 const mapper = require("automapper-js");
+const request = require("request-promise");
 
 class DiagnosticoService{
     constructor({PacienteService, MedicoService, ConsultaService}){
@@ -15,6 +16,15 @@ class DiagnosticoService{
                 res.status(412).json({msg: error.message});  
         });
     }
+
+    async guardarConsulata(options , res){
+
+        rp(options, res)
+            .then(options => res.status(201).json({msg: "Consulta enviada"}))
+            .catch(error => {
+                res.status(412).json({msg: error.message})})
+            }
+    
 
 }
 

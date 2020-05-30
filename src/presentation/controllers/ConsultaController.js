@@ -38,6 +38,25 @@ class ConsultaController {
         await this._diagnosticoService.diagnosticar(req.body, res);
     }
 
+    async guardarConsulta(req, res) {
+        const consulta = {
+            "dni": 3000000,
+            "nombre": "Jorge",
+            "apellido": "Gomez",
+            "fechaNacimiento": "2000",
+            "email": "juangomez@yahoo.com",
+            "telefono": "42",
+            "sexo": "Masculino"
+        };
+        var options = {
+            method: 'POST',
+            uri: 'http://api.posttestserver.com/post',
+            body: consulta,
+            json: true // Automatically stringifies the body to JSON
+        }
+        this._diagnosticoService.guardarConsulta(options,res);  //debo encotrar la forma de mandar ta una consuta de aca
+        }
+
 
 }
 

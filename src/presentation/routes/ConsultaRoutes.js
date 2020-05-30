@@ -62,5 +62,12 @@ module.exports = ( { ConsultaController } ) => {
      */
     router.put("/diagnosticar", ConsultaController.diagnosticar.bind(ConsultaController));
 
+    router.post("/guardarConsulta", ConsultaController.guardarConsulta.bind(ConsultaController));
+
+
+
+
+    router
+
     return router;
 }
