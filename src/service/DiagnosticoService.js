@@ -17,9 +17,9 @@ class DiagnosticoService{
         });
     }
 
-    async guardarConsulata(options , res){
+    async guardarConsulta(options , res){
 
-        rp(options, res)
+        request(options)
             .then(options => res.status(201).json({msg: "Consulta enviada"}))
             .catch(error => {
                 res.status(412).json({msg: error.message})})
