@@ -24,22 +24,6 @@ module.exports = ( { ConsultaController } ) => {
 
     /**
      * @swagger
-     * /consulta:
-     *  post:
-     *      description: PACIENTES - Usar para crear nuevas consultas para que sean diagnosticadas
-     *      tags: ["PACIENTES"]
-     *      produces:
-     *          - aplication/json
-     *      responses:
-     *          '201':
-     *              description: Se agrego correctamente la consulta
-     *          '400':
-     *              description: Error
-     */
-    router.post("/consultaNueva", ConsultaController.recibirConsulta.bind(ConsultaController));
-
-    /**
-     * @swagger
      * /consulta/consultasinresponder/{medicodni}:
      *  get:
      *      description: Usar para obtener las consultas no contestadas de un medico

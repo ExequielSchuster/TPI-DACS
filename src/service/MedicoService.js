@@ -7,7 +7,8 @@ class MedicoService extends BaseService {
     }
 
     async getMedicoLibre(){
-        const resultado = await this._entityRepository.getMedicoLibre();
+        let resultado;
+        resultado = await this._entityRepository.getMedicoLibre().catch(e => {resultado = [{dni:0}]});
         return resultado[0].dni;
     }
 

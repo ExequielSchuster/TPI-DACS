@@ -1,4 +1,5 @@
 const mapper = require("automapper-js");
+const axios = require('axios')
 
 class AsignacionService{
     constructor({MedicoService, ConsultaService}){
@@ -6,18 +7,23 @@ class AsignacionService{
         this._consultaService = ConsultaService;
     }
 
-    async asignarConsulta(consultaGenerica){
-
+    async asignarConsulta(consultaId, dniPaciente){
 
         const medicoParaAsignarDni = await this._medicoService.getMedicoLibre();
 
-        const consulta = this._consultaService.mapear(consultaGenerica);
-        consulta.asignarMedico(medicoParaAsignarDni);
+        const consultaAsignada = {
+            id: consultaId,
+            MedicoDni: medicoParaAsignarDni,
+            dni: dniPaciente
+        }
 
-        const consultaGenericaAsignada = consulta.toObject(); // Mirar esto
+        // const consulta = this._consultaService.mapear(consultaGenerica);
+        // consulta.asignarMedico(medicoParaAsignarDni);
+        // const consultaGenericaAsignada = consulta.toObject(); // Mirar esto
 
-        return consultaGenericaAsignada;
-        //consulta.asignarMedico(medicoParaAsignar); // Mirar esto
+        await this._consultaService.create(consultaAsignada).catch(e => {return false;});
+
+        return true;
     }
 
 }
